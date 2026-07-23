@@ -26,8 +26,23 @@ const faqs = [
   { q: 'What does Sharke cost?', a: 'The Grant Funding Viability Assessment is $79 one time. The self-serve Grant Team workspace is $159 per month, and the done-for-you Grant Office starts at $249 per month. Published pricing may change.' },
 ]
 
+function BrandLogo({ compact = false, className = '' }) {
+  return <span className={`brand-logo${compact ? ' is-compact' : ''} ${className}`.trim()}>
+    <span className="brand-logo-mark" aria-hidden="true">S</span>
+    {!compact && <span className="brand-logo-text">Sharke.ai</span>}
+  </span>
+}
+
 function Logo() {
-  return <a className="logo" href="#top" aria-label="Sharke home"><img src="/assets/shark-logo-transparent.webp" alt="Sharke" width="180" height="126" /></a>
+  return <a className="logo" href="#top" aria-label="Sharke.ai home"><BrandLogo /></a>
+}
+
+function SvgBrand({ x, y, scale = 1, stacked = false }) {
+  return <g className={`svg-brand${stacked ? ' is-stacked' : ''}`} transform={`translate(${x} ${y}) scale(${scale})`} aria-label="Sharke.ai">
+    <rect className="svg-brand-mark" width="28" height="28" rx="6"/>
+    <text className="svg-brand-s" x="14" y="19" textAnchor="middle">S</text>
+    <text className="svg-brand-name" x={stacked ? 14 : 38} y={stacked ? 43 : 19} textAnchor={stacked ? 'middle' : 'start'}>Sharke.ai</text>
+  </g>
 }
 
 function Reveal({ children, className = '', delay = 0, as = 'div', ...props }) {
@@ -39,8 +54,7 @@ function Reveal({ children, className = '', delay = 0, as = 'div', ...props }) {
 function PipelineAnimation() {
   return <div className="pipeline-experience">
     <div className="pipeline-stage">
-      <svg className="pipeline-svg" viewBox="0 0 1120 430" role="img" aria-labelledby="pipeline-title pipeline-desc">
-        <title id="pipeline-title">How Sharke turns possible funders into a Verified Pipeline</title>
+      <svg className="pipeline-svg" viewBox="0 0 1120 430" role="img" aria-label="How Sharke turns possible funders into a Verified Pipeline" aria-describedby="pipeline-desc">
         <desc id="pipeline-desc">Possible grants enter the Sharke verification layer. Each receives a Pursue, Wait, or Move on verdict. Pursue opportunities fill the Verified Pipeline and move into an application workflow.</desc>
         <defs>
           <linearGradient id="flow-gradient" x1="0" x2="1">
@@ -91,8 +105,7 @@ function PipelineAnimation() {
           <circle className="core-halo" cx="440" cy="205" r="83"/>
           <circle className="core-orbit" cx="440" cy="205" r="66"/>
           <circle className="core-body" cx="440" cy="205" r="52"/>
-          <path className="shark-fin" d="M414 217c17-4 24-30 31-48 17 12 29 30 31 48-19-8-42-8-62 0z"/>
-          <text x="440" y="244" textAnchor="middle">SHARKE</text>
+          <SvgBrand x={426} y={181} scale={1} stacked />
           <g className="orbit-dot"><circle cx="440" cy="139" r="5"/></g>
         </g>
 
@@ -187,7 +200,7 @@ function DecisionInspector() {
     </div>
     <motion.div className="decision-record" key={verdict} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:.32,ease:[.22,1,.36,1]}}>
       <div className="record-top">
-        <div className="record-brand"><span className="mini-fin"/><b>SHARKE</b><small>DECISION RECORD</small></div>
+        <div className="record-brand"><BrandLogo/><small>DECISION RECORD</small></div>
         <span className="record-id">VERIFIED AGAINST PRIMARY SOURCES</span>
       </div>
       <div className="record-verdict">
@@ -210,8 +223,7 @@ function DecisionInspector() {
 function HeroDecisionVisual() {
   return <motion.div className="hero-intelligence" initial={{opacity:0,x:34,scale:.97}} animate={{opacity:1,x:0,scale:1}} transition={{duration:.9,delay:.18,ease:[.22,1,.36,1]}}>
     <div className="intel-top"><span><i/> LIVE VERIFICATION</span><span>6.3M+ AWARD RECORDS</span></div>
-    <svg viewBox="0 0 640 520" role="img" aria-labelledby="hero-intel-title hero-intel-desc">
-      <title id="hero-intel-title">Sharke grant verification visualization</title>
+    <svg viewBox="0 0 640 520" role="img" aria-label="Sharke grant verification visualization" aria-describedby="hero-intel-desc">
       <desc id="hero-intel-desc">Award history, eligibility, organization size, and geography flow through Sharke verification to produce a Pursue verdict for a grant opportunity.</desc>
       <defs>
         <radialGradient id="hero-core"><stop stopColor="#155363"/><stop offset="1" stopColor="#061722"/></radialGradient>
@@ -225,26 +237,25 @@ function HeroDecisionVisual() {
         <path d="M190 115 C218 115 232 180 274 213"/>
         <path d="M190 232 C220 232 242 238 269 244"/>
         <path d="M190 351 C218 351 236 302 276 272"/>
-        <path d="M450 122 C426 122 414 180 384 216"/>
-        <path d="M450 345 C424 345 411 304 384 275"/>
+        <path d="M440 122 C420 122 410 180 384 216"/>
+        <path d="M440 345 C420 345 408 304 384 275"/>
       </g>
       <g className="source source-awards" transform="translate(40 76)"><rect width="150" height="78" rx="13"/><circle cx="27" cy="39" r="13"/><path d="M20 42h14M22 42V32h10v10M25 32v-5h4v5"/><text x="50" y="34">AWARD HISTORY</text><text className="source-value" x="50" y="56">12 of 15 aligned</text></g>
       <g className="source source-size" transform="translate(40 193)"><rect width="150" height="78" rx="13"/><circle cx="27" cy="39" r="13"/><path d="M21 46V34m6 12V29m6 17V37"/><text x="50" y="34">ASK + ORG SIZE</text><text className="source-value" x="50" y="56">$75K–$125K</text></g>
       <g className="source source-new" transform="translate(40 310)"><rect width="150" height="78" rx="13"/><circle cx="27" cy="39" r="13"/><path d="M20 39h14m-7-7v14"/><text x="50" y="34">NEW GRANTEES</text><text className="source-value" x="50" y="56">4 in two cycles</text></g>
-      <g className="source source-eligible" transform="translate(450 76)"><rect width="150" height="78" rx="13"/><circle cx="123" cy="39" r="13"/><path d="M117 39l4 4 8-10"/><text x="15" y="34">ELIGIBILITY</text><text className="source-value" x="15" y="56">Requirements met</text></g>
-      <g className="source source-geo" transform="translate(450 310)"><rect width="150" height="78" rx="13"/><circle cx="123" cy="39" r="13"/><path d="M123 29c-8 0-11 9-6 15l6 7 6-7c5-6 2-15-6-15zm0 6a4 4 0 110 8 4 4 0 010-8z"/><text x="15" y="34">GEOGRAPHY</text><text className="source-value" x="15" y="56">Southwest fit</text></g>
+      <g className="source source-eligible source-right" transform="translate(440 76)"><rect width="160" height="78" rx="13"/><circle cx="139" cy="39" r="13"/><path d="M133 39l4 4 8-10"/><text x="15" y="34">ELIGIBILITY</text><text className="source-value" x="15" y="56">Requirements met</text></g>
+      <g className="source source-geo source-right" transform="translate(440 310)"><rect width="160" height="78" rx="13"/><circle cx="139" cy="39" r="13"/><path d="M139 29c-8 0-11 9-6 15l6 7 6-7c5-6 2-15-6-15zm0 6a4 4 0 110 8 4 4 0 010-8z"/><text x="15" y="34">GEOGRAPHY</text><text className="source-value" x="15" y="56">Southwest fit</text></g>
       <g className="intel-core">
         <circle className="intel-halo halo-three" cx="330" cy="248" r="91"/>
         <circle className="intel-halo halo-two" cx="330" cy="248" r="73"/>
         <circle className="intel-halo halo-one" cx="330" cy="248" r="57"/>
         <circle className="intel-core-body" cx="330" cy="248" r="43"/>
-        <path className="intel-fin" d="M305 260c13-4 20-27 26-43 15 11 25 27 26 43-16-7-35-7-52 0z"/>
-        <text x="330" y="280" textAnchor="middle">SHARKE</text>
+        <SvgBrand x={316} y={225} scale={1} stacked />
         <g className="intel-scanner"><path d="M330 157A91 91 0 01394 184"/><circle cx="394" cy="184" r="5"/></g>
       </g>
-      <g className="intel-particles" aria-hidden="true">{[0,1,2,3,4].map(i=><circle key={i} r="3.5" style={{'--i':i}}><animateMotion dur="3.7s" begin={`${i*.55}s`} repeatCount="indefinite" path="M190 232 C225 232 247 240 287 247 C350 251 390 298 452 389"/></circle>)}</g>
-      <path className="decision-stream" d="M358 282 C385 326 410 361 457 389" aria-hidden="true"/>
-      <g className="hero-verdict" transform="translate(150 386)">
+      <g className="intel-particles" aria-hidden="true">{[0,1,2,3,4].map(i=><circle key={i} r="3.5" style={{'--i':i}}><animateMotion dur="3.7s" begin={`${i*.55}s`} repeatCount="indefinite" path="M190 232 C225 232 247 240 287 247 C350 251 390 310 452 407"/></circle>)}</g>
+      <path className="decision-stream" d="M358 282 C385 334 410 378 457 407" aria-hidden="true"/>
+      <g className="hero-verdict" transform="translate(150 404)">
         <rect width="340" height="108" rx="16"/>
         <circle cx="49" cy="54" r="25"/><path d="M37 54l8 8 17-21"/>
         <text className="verdict-small" x="88" y="29">COMMUNITY RESILIENCE FUND</text>
@@ -287,14 +298,13 @@ function App() {
           <div className="hero-actions"><a className="button" href="#demo">Get the $79 assessment <ArrowRight size={17}/></a><a className="ghost" href="#how-it-works"><span className="play"><Search size={13}/></span> See the verification process</a></div>
           <div className="micro"><Check size={14}/> Board-ready in 48 hours <Check size={14}/> Source-cited decisions <Check size={14}/> Human-reviewed</div>
         </motion.div>
-        <HeroDecisionVisual />
       </section>
 
       <section className="cred"><p>Grant verification for nonprofits counting on grants to fund the mission</p><div><span>EXECUTIVE DIRECTORS</span><span>DEVELOPMENT TEAMS</span><span>GRANT WRITERS</span><span>NONPROFITS</span><span>FOUNDATIONS</span></div></section>
 
       <Reveal as="section" className="problem section" id="why-shark">
         <div className="problem-grid"><div className="problem-copy"><div className="section-kicker">The hidden risk in your grant plan</div><h2>Your pipeline can look full.<br/><em>Your mission can still be exposed.</em></h2><p>More than $1 trillion in grant funding is awarded annually. Sharke draws on 6.3 million accepted grant records to help identify which opportunities have a documented path for your organization.</p><p>A list of possible grants is not a funding plan. Before anyone writes a word, Sharke checks the funder’s actual behavior—not only the language in an RFP.</p></div>
-        <div className="funding-flow"><img src="/assets/sharke-funding-flow.webp" alt="$1 trillion in annual grant funding flows through 6.3 million accepted grants. Sharke evaluates the organization and directs it toward best-fit grants." width="1200" height="800" loading="lazy" decoding="async" /></div></div>
+        <div className="problem-intelligence"><HeroDecisionVisual /></div></div>
       </Reveal>
 
       <section className="verification section" id="how-it-works">
