@@ -1,11 +1,17 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "shark-ai-site",
+  "name": "sharke-ai-site",
   "main": "worker.js",
-  "account_id": "55c84df414e8212cfcf7b7deef3e27ea",
+  "account_id": "d26416049d31166eb145d47d7b4f2a86",
   "compatibility_date": "2026-07-22",
-  "workers_dev": true,
+  "workers_dev": false,
   "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "skarke.j3-enterprises.com",
+      "custom_domain": true
+    }
+  ],
   "observability": {
     "enabled": true,
     "logs": {

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shark.ai/sitemap.xml
+Sitemap: https://skarke.j3-enterprises.com/sitemap.xml
