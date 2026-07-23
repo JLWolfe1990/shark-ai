@@ -222,11 +222,11 @@ function HeroDecisionVisual() {
       <g className="intel-grid" aria-hidden="true">{[100,180,260,340,420,500,580].map(x=><line key={`x${x}`} x1={x} y1="24" x2={x} y2="496"/>)}{[70,140,210,280,350,420,490].map(y=><line key={`y${y}`} x1="28" y1={y} x2="612" y2={y}/>)}</g>
       <ellipse className="intel-ambient" cx="330" cy="252" rx="220" ry="180"/>
       <g className="source-lines" aria-hidden="true">
-        <path d="M128 115 C205 115 218 180 274 213"/>
-        <path d="M108 232 C185 232 220 235 269 244"/>
-        <path d="M124 351 C205 351 220 302 276 272"/>
-        <path d="M508 122 C443 122 427 180 384 216"/>
-        <path d="M527 345 C448 345 430 304 384 275"/>
+        <path d="M190 115 C218 115 232 180 274 213"/>
+        <path d="M190 232 C220 232 242 238 269 244"/>
+        <path d="M190 351 C218 351 236 302 276 272"/>
+        <path d="M450 122 C426 122 414 180 384 216"/>
+        <path d="M450 345 C424 345 411 304 384 275"/>
       </g>
       <g className="source source-awards" transform="translate(40 76)"><rect width="150" height="78" rx="13"/><circle cx="27" cy="39" r="13"/><path d="M20 42h14M22 42V32h10v10M25 32v-5h4v5"/><text x="50" y="34">AWARD HISTORY</text><text className="source-value" x="50" y="56">12 of 15 aligned</text></g>
       <g className="source source-size" transform="translate(40 193)"><rect width="150" height="78" rx="13"/><circle cx="27" cy="39" r="13"/><path d="M21 46V34m6 12V29m6 17V37"/><text x="50" y="34">ASK + ORG SIZE</text><text className="source-value" x="50" y="56">$75K–$125K</text></g>
@@ -242,7 +242,7 @@ function HeroDecisionVisual() {
         <text x="330" y="280" textAnchor="middle">SHARKE</text>
         <g className="intel-scanner"><path d="M330 157A91 91 0 01394 184"/><circle cx="394" cy="184" r="5"/></g>
       </g>
-      <g className="intel-particles" aria-hidden="true">{[0,1,2,3,4].map(i=><circle key={i} r="3.5" style={{'--i':i}}><animateMotion dur="3.7s" begin={`${i*.55}s`} repeatCount="indefinite" path="M90 230 C205 230 226 242 287 247 C350 251 390 298 452 389"/></circle>)}</g>
+      <g className="intel-particles" aria-hidden="true">{[0,1,2,3,4].map(i=><circle key={i} r="3.5" style={{'--i':i}}><animateMotion dur="3.7s" begin={`${i*.55}s`} repeatCount="indefinite" path="M190 232 C225 232 247 240 287 247 C350 251 390 298 452 389"/></circle>)}</g>
       <path className="decision-stream" d="M358 282 C385 326 410 361 457 389" aria-hidden="true"/>
       <g className="hero-verdict" transform="translate(150 386)">
         <rect width="340" height="108" rx="16"/>
