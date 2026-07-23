@@ -28,7 +28,7 @@ const faqs = [
 
 function BrandLogo({ compact = false, className = '' }) {
   return <span className={`brand-logo${compact ? ' is-compact' : ''} ${className}`.trim()}>
-    <img src="/assets/sharke-logo.png" alt="" aria-hidden="true" />
+    <img src="/assets/sharke-logo-ui.webp" alt="" aria-hidden="true" width="224" height="131" />
   </span>
 }
 
@@ -37,8 +37,8 @@ function Logo() {
 }
 
 function SvgBrand({ x, y, scale = 1, stacked = false }) {
-  return <g className={`svg-brand${stacked ? ' is-stacked' : ''}`} transform={`translate(${x} ${y}) scale(${scale})`} aria-label="Sharke.ai">
-    <image className="svg-brand-image" href="/assets/sharke-logo.png" x={stacked ? -9 : 0} y={stacked ? 3 : 0} width={stacked ? 46 : 72} height={stacked ? 27 : 42} preserveAspectRatio="xMidYMid meet" />
+  return <g className={`svg-brand${stacked ? ' is-stacked' : ''}`} transform={`translate(${x} ${y}) scale(${scale})`} role="img" aria-label="Sharke.ai">
+    <image className="svg-brand-image" href="/assets/sharke-logo-ui.webp" x={stacked ? -9 : 0} y={stacked ? 3 : 0} width={stacked ? 46 : 72} height={stacked ? 27 : 42} preserveAspectRatio="xMidYMid meet" />
   </g>
 }
 
@@ -286,7 +286,7 @@ function App() {
 
     <main>
       <section className="hero">
-        <div className="hero-image" aria-hidden="true">{!reduceMotion && <video autoPlay loop muted playsInline preload="metadata" poster="/assets/sharke-hero-poster.webp" tabIndex="-1"><source src="/assets/sharke-hero-swim.mp4" type="video/mp4" /></video>}</div>
+        <div className="hero-image" aria-hidden="true">{!reduceMotion && <video autoPlay loop muted playsInline preload="none" poster="/assets/sharke-hero-poster.webp" tabIndex="-1"><source src="/assets/sharke-hero-swim.mp4" type="video/mp4" media="(min-width: 761px)" /></video>}</div>
         <div className="waves" aria-hidden="true"><i/><i/><i/></div>
         <motion.div className="hero-copy" initial={reduceMotion ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .75, ease: [0.22, 1, 0.36, 1] }}>
           <div className="eyebrow"><span/> Verification-first grant funding</div>

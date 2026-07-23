@@ -1,6 +1,6 @@
 // Cloudflare Worker serving the Sharke static site from the existing Civo object store.
 const CIVO_BASE = 'https://objectstore.nyc1.civo.com/j-cubed/shark-ai';
-const DEPLOY_VERSION = '2026-07-23.4';
+const DEPLOY_VERSION = '2026-07-23.5';
 
 const CONTENT_TYPES = {
   '.css': 'text/css; charset=utf-8',
