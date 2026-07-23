@@ -91,7 +91,7 @@ header{height:82px}header nav{gap:22px;margin-left:34px}.button.small{min-height
 @media(prefers-reduced-motion:reduce){.hero-image,.hero-image::after{animation:none!important;transform:none!important}.hero-image{inset:0}}
 
 /* Supplied hero animation: MP4 is materially smaller than an equivalent GIF */
-.hero-image{inset:0;animation:none;transform:none;filter:none;overflow:hidden;background-image:url('/assets/shark-data-hero-v2.webp')}
+.hero-image{inset:0;animation:none;transform:none;filter:none;overflow:hidden;background-image:url('/assets/sharke-hero-poster.webp')}
 .hero-image::after{display:none;animation:none}
 .hero-image video{width:100%;height:100%;display:block;object-fit:cover;object-position:center center;filter:saturate(.9) brightness(.82);transform:scale(1.015)}
 @media(max-width:760px){.hero-image video{object-position:58% center;filter:saturate(.85) brightness(.62)}}
@@ -202,16 +202,12 @@ header{padding-inline:max(30px,calc((100% - var(--content))/2))}
 @media(prefers-reduced-motion:reduce){.hero-intelligence:before,.intel-top i,.source-lines path,.decision-stream,.source,.halo-one,.halo-two,.halo-three,.intel-scanner{animation:none!important}.intel-particles{display:none}}
 
 /* Canonical Sharke.ai identity, shared by navigation, footer, records, and diagrams. */
-.brand-logo{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;line-height:1}
-.brand-logo-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:6px;background:#4ae3a0;color:#06130f;font-size:16px;font-weight:700}
-.brand-logo-text{color:#f3f7f6;font-size:17px;font-weight:600;letter-spacing:-.01em}
+.brand-logo{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;line-height:1}
+.brand-logo img{display:block;width:112px;height:auto;max-height:66px;object-fit:contain}
+.brand-logo.is-compact img{width:48px}
 .logo{width:auto!important;height:auto!important}
-.logo img{display:none}
-.record-brand .brand-logo{gap:8px}.record-brand .brand-logo-mark{width:25px;height:25px;font-size:14px}.record-brand .brand-logo-text{font-size:16px}
-.svg-brand-mark{fill:#4ae3a0}.svg-brand-s{fill:#06130f;font-size:16px;font-weight:700;letter-spacing:0}.svg-brand-name{fill:#f3f7f6;font-size:13px;font-weight:650;letter-spacing:-.1px}
-.svg-brand.is-stacked .svg-brand-name{font-size:10px;text-anchor:middle}
-.verify-core .svg-brand text,.intel-core .svg-brand text{fill:#06130f}
-.verify-core .svg-brand .svg-brand-name,.intel-core .svg-brand .svg-brand-name{fill:#dffaf1}
+.record-brand .brand-logo img{width:84px}
+.svg-brand-image{pointer-events:none}
 
 /* Put the verification product story beside the supporting evidence, not over the hero. */
 .hero{min-height:650px}

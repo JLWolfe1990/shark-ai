@@ -28,8 +28,7 @@ const faqs = [
 
 function BrandLogo({ compact = false, className = '' }) {
   return <span className={`brand-logo${compact ? ' is-compact' : ''} ${className}`.trim()}>
-    <span className="brand-logo-mark" aria-hidden="true">S</span>
-    {!compact && <span className="brand-logo-text">Sharke.ai</span>}
+    <img src="/assets/sharke-logo.png" alt="" aria-hidden="true" />
   </span>
 }
 
@@ -39,9 +38,7 @@ function Logo() {
 
 function SvgBrand({ x, y, scale = 1, stacked = false }) {
   return <g className={`svg-brand${stacked ? ' is-stacked' : ''}`} transform={`translate(${x} ${y}) scale(${scale})`} aria-label="Sharke.ai">
-    <rect className="svg-brand-mark" width="28" height="28" rx="6"/>
-    <text className="svg-brand-s" x="14" y="19" textAnchor="middle">S</text>
-    <text className="svg-brand-name" x={stacked ? 14 : 38} y={stacked ? 43 : 19} textAnchor={stacked ? 'middle' : 'start'}>Sharke.ai</text>
+    <image className="svg-brand-image" href="/assets/sharke-logo.png" x={stacked ? -9 : 0} y={stacked ? 3 : 0} width={stacked ? 46 : 72} height={stacked ? 27 : 42} preserveAspectRatio="xMidYMid meet" />
   </g>
 }
 
@@ -289,7 +286,7 @@ function App() {
 
     <main>
       <section className="hero">
-        <div className="hero-image" aria-hidden="true">{!reduceMotion && <video autoPlay loop muted playsInline preload="metadata" poster="/assets/shark-data-hero-v2.webp" tabIndex="-1"><source src="/assets/shark-hero-swim-v3.mp4" type="video/mp4" /></video>}</div>
+        <div className="hero-image" aria-hidden="true">{!reduceMotion && <video autoPlay loop muted playsInline preload="metadata" poster="/assets/sharke-hero-poster.webp" tabIndex="-1"><source src="/assets/sharke-hero-swim.mp4" type="video/mp4" /></video>}</div>
         <div className="waves" aria-hidden="true"><i/><i/><i/></div>
         <motion.div className="hero-copy" initial={reduceMotion ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .75, ease: [0.22, 1, 0.36, 1] }}>
           <div className="eyebrow"><span/> Verification-first grant funding</div>
