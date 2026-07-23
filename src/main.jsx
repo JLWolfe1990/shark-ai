@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, Check, ChevronDown, CircleCheck, Menu, Search, Sparkles, Target, X } from 'lucide-react'
+import { ArrowRight, Check, ChevronDown, CircleCheck, Menu, Search, Target, X } from 'lucide-react'
 import './styles.css'
 
 const steps = [
@@ -12,7 +12,7 @@ const steps = [
 ]
 
 const posts = [
-  { tag: 'Grant matching', title: 'Which grants should my nonprofit apply for?', text: 'A practical way to evaluate eligibility, alignment, award size, and the true cost of applying.', read: '8 min', image: '/assets/grants-nonprofit-fit.webp', alt: 'Nonprofit leader reviewing a curated set of high-fit grant opportunities' },
+  { tag: 'Grant matching', title: 'Which grants should my nonprofit apply for?', text: 'A practical way to evaluate eligibility, alignment, award size, and the true cost of applying.', read: '8 min', image: '/assets/curated-grants-v2.webp', alt: 'Three high-fit grant opportunities selected from a larger field of possibilities' },
   { tag: 'AI & grants', title: 'Grant search vs. grant matching: what is the difference?', text: 'Why finding more opportunities is not the same as identifying the right opportunities.', read: '6 min', image: '/assets/grant-search-vs-matching.webp', alt: 'A focused path through a sea of grant opportunities illustrating precise grant matching' },
   { tag: 'Grant strategy', title: 'How to know if a grant is worth applying for', text: 'The fit signals strong grant teams review before committing time to an application.', read: '7 min', image: '/assets/grant-fit-signals.webp', alt: 'Mission, eligibility, budget, and geography signals converging on a strong grant fit' },
 ]
@@ -56,7 +56,7 @@ function App() {
 
     <main>
       <section className="hero">
-        <div className="hero-image" aria-hidden="true" />
+        <div className="hero-image" aria-hidden="true">{!reduceMotion && <video autoPlay loop muted playsInline preload="metadata" poster="/assets/shark-data-hero-v2.webp" tabIndex="-1"><source src="/assets/shark-hero-swim-v3.mp4" type="video/mp4" /></video>}</div>
         <div className="waves" aria-hidden="true"><i/><i/><i/></div>
         <motion.div className="hero-copy" initial={reduceMotion ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .75, ease: [0.22, 1, 0.36, 1] }}>
           <div className="eyebrow"><span/> Grant-matching intelligence</div>
@@ -68,7 +68,7 @@ function App() {
         <motion.div className="proof-card match-card" initial={reduceMotion ? false : { opacity: 0, x: 35, scale: .97 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ duration: .8, delay: .2, ease: [0.22, 1, 0.36, 1] }}>
           <div className="proof-head"><span>Opportunity match</span><span className="live"><i/> profile analyzed</span></div>
           <div className="match-title"><div><small>BEST-FIT OPPORTUNITY</small><b>Community Impact Fund</b></div><strong>94%</strong></div>
-          <div className="match-factors"><span><CircleCheck size={15}/> Mission alignment</span><span><CircleCheck size={15}/> Budget fit</span><span><CircleCheck size={15}/> Eligible organization</span><span><CircleCheck size={15}/> Geographic match</span></div>
+          <div className="match-mini"><img src="/assets/grant-match-platform-v2.webp" alt="" width="1200" height="900"/><span className="signal mission">Mission</span><span className="signal budget">Budget</span><span className="signal eligibility">Eligibility</span><span className="signal geography">Geography</span></div>
           <div className="proof-foot"><span>Organizational fit</span><div className="meter"><i style={{width:'94%'}}/></div><span>Strong</span></div>
         </motion.div>
       </section>
@@ -76,9 +76,8 @@ function App() {
       <section className="cred"><p>Grant matching for organizations competing for consequential funding</p><div><span>NONPROFITS</span><span>RESEARCH</span><span>EDUCATION</span><span>PUBLIC SECTOR</span><span>CONSULTANTS</span></div></section>
 
       <Reveal as="section" className="problem section" id="why-shark">
-        <div className="section-kicker">The new grant problem</div>
-        <div className="split"><h2>AI made grants easier to find.<br/><em>Not easier to choose.</em></h2><div><p>Applicants can now discover and apply for opportunities at unprecedented scale. But applying to more grants does not mean winning more funding.</p><p>Shark.ai separates grants that are merely available from the grants that actually fit your organization.</p></div></div>
-        <div className="stats"><div><b>$1T</b><span>in grant funding is awarded annually across public and private sources</span></div><div><b>6.3M</b><span>accepted grants inform Shark.ai’s proprietary matching intelligence</span></div><div><b>1 list</b><span>curated around your organization, budget, eligibility, and requirements</span></div></div>
+        <div className="problem-grid"><div className="problem-copy"><div className="section-kicker">The new grant problem</div><h2>AI made grants easier to find.<br/><em>Not easier to choose.</em></h2><p>Applicants can now discover and apply for opportunities at unprecedented scale. But applying to more grants does not mean winning more funding.</p><p>Shark.ai separates grants that are merely available from the grants that actually fit your organization.</p></div>
+        <div className="funding-flow"><img src="/assets/shark-funding-flow.webp" alt="$1 trillion in annual grant funding flows through 6.3 million accepted grants. Shark.ai matches your organization and routes it toward best-fit grants." width="1200" height="800" loading="lazy" decoding="async" /></div></div>
       </Reveal>
 
       <section className="verification section" id="how-it-works">
@@ -88,10 +87,8 @@ function App() {
       </section>
 
       <Reveal as="section" className="feature section">
-        <div className="feature-visual">
-          <div className="fit-stack"><div className="fit-ring"><Target/><strong>94%</strong><span>BEST FIT</span></div><div className="fit-tags"><span>Mission</span><span>Budget</span><span>Eligibility</span><span>Geography</span></div></div>
-        </div>
-        <div className="feature-copy"><div className="section-kicker">Search finds options. Shark finds fit.</div><h2>Know what is worth applying for.</h2><p>A keyword match cannot tell you whether a grant makes strategic sense. Shark.ai evaluates your organization and the opportunity together.</p><ul><li><Check/> Match funding to your organization’s size and budget</li><li><Check/> Screen requirements and eligibility before you invest time</li><li><Check/> Prioritize opportunities aligned with your mission and programs</li><li><Check/> Replace overwhelming search results with a focused shortlist</li></ul><p className="answer-note"><Sparkles size={16}/><span><b>ChatGPT can tell you which grants exist.</b><br/>Shark.ai tells you which grants your organization should pursue.</span></p></div>
+        <div className="feature-visual"><img src="/assets/grant-match-platform-v2.webp" alt="Grant-fit signals converging on one best-fit opportunity" width="1200" height="900" loading="lazy" decoding="async"/><div className="fit-ring"><Target/><strong>94%</strong><span>BEST FIT</span></div></div>
+        <div className="feature-copy"><div className="section-kicker">Search finds options. Shark finds fit.</div><h2>Know what is worth applying for.</h2><p>A keyword match cannot tell you whether a grant makes strategic sense. Shark.ai evaluates your organization and the opportunity together.</p><ul><li><Check/> Match funding to your organization’s size and budget</li><li><Check/> Screen requirements and eligibility before you invest time</li><li><Check/> Prioritize opportunities aligned with your mission and programs</li><li><Check/> Replace overwhelming search results with a focused shortlist</li></ul><p className="answer-note"><span><b>ChatGPT can tell you which grants exist.</b><br/>Shark.ai tells you which grants your organization should pursue.</span></p></div>
       </Reveal>
 
       <Reveal as="section" className="answers section" id="answers">

@@ -1,0 +1,47 @@
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: production-website
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build and validate Worker
+        run: |
+          npm run build
+          npx --yes wrangler@4.113.0 deploy --dry-run
+      - name: Upload static site to the existing Civo object store
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.CIVO_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CIVO_SECRET_KEY }}
+          AWS_DEFAULT_REGION: nyc1
+          AWS_REQUEST_CHECKSUM_CALCULATION: WHEN_REQUIRED
+          AWS_RESPONSE_CHECKSUM_VALIDATION: WHEN_REQUIRED
+        run: >-
+          aws s3 sync dist/ s3://j-cubed/shark-ai/
+          --endpoint-url https://objectstore.nyc1.civo.com
+          --delete
+      - name: Deploy the Cloudflare Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          sed -i "s/const DEPLOY_VERSION = '[^']*';/const DEPLOY_VERSION = '${GITHUB_SHA}';/" worker.js
+          npx --yes wrangler@4.113.0 deploy
