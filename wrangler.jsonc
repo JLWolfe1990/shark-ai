@@ -4,14 +4,8 @@
   "main": "worker.js",
   "account_id": "55c84df414e8212cfcf7b7deef3e27ea",
   "compatibility_date": "2026-07-22",
-  "workers_dev": false,
+  "workers_dev": true,
   "preview_urls": false,
-  "routes": [
-    {
-      "pattern": "shark-ai.josh-wolfe.com",
-      "custom_domain": true
-    }
-  ],
   "observability": {
     "enabled": true,
     "logs": {
