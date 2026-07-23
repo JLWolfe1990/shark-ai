@@ -288,7 +288,7 @@ function App() {
       <section className="hero">
         <div className="hero-image" aria-hidden="true">{!reduceMotion && <video autoPlay loop muted playsInline preload="none" poster="/assets/sharke-hero-poster.webp" tabIndex="-1"><source src="/assets/sharke-hero-swim.mp4" type="video/mp4" media="(min-width: 761px)" /></video>}</div>
         <div className="waves" aria-hidden="true"><i/><i/><i/></div>
-        <motion.div className="hero-copy" initial={reduceMotion ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .75, ease: [0.22, 1, 0.36, 1] }}>
+        <motion.div className="hero-copy" initial={false}>
           <div className="eyebrow"><span/> Verification-first grant funding</div>
           <h1>Build a pipeline<br/>that can fund<br/><em>your mission.</em></h1>
           <p>Sharke finds the grants worth pursuing, screens out the ones with no documented path to funding, and turns what survives into your Verified Pipeline.</p>
